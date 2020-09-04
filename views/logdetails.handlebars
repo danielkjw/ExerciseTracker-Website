@@ -1,0 +1,67 @@
+
+<div class="col-4">
+<table class="table table-sm table-bordered table-hover">
+
+<blockquote class="blockquote">
+</blockquote> 
+ <ul class="list-inline">
+  <li class="list-inline-item"><p class="h5"></p></li>
+</ul>
+  <thead class="thead-light">
+<td><button type="button" class="btn btn-outline-dark btn-sm" data-toggle="collapse" data-target="#collapseExample9" data-id="{{lid}}" class="btn-sm btn-light"><i class="fa fa-minus" aria-hidden="true"></i> Hide Details</button></td>
+<td><button type="button" class="btn btn-success btn-sm" id="getAddExerciseDetail1" onclick="getAddLogDetail({{logdetails.[0].lid}})"  data-toggle="modal" data-target="#addLogDetailModal"><i class="fas fa-plus-circle"></i> Add Exercises</button></td>
+      <p><strong>Log Details</strong></p>
+      <p><strong>All Reps: {{alldetails.[0].allreps}}</strong></p>
+      <tr>
+      <th>Name</th>
+      <th>Log ID</th> 
+      <th>Date</th>
+      <th>Exercise ID</th>
+      <th>Exercise Name</th>
+      <th>EWeight</th>
+      <th>Sets</th>
+      <th>Reps</th>
+      <th>Units</th>
+      <th>Total Reps</th>
+      <th>Rest Time</th>
+      </tr>
+  </thead> 
+  <tbody class="table-striped"> 
+      <tr>{{#each logdetails}}
+      <td>{{fname}} {{lname}}</td> 
+         <td>{{lid}}</td> 
+        <td>{{ldate}}</td> 
+        <td>{{exercise_id}}</td> 
+        <td>{{ename}}</td>
+         <td>{{eweight}}</td>
+          <td>{{sets}}</td>
+           <td>{{reps}}</td>
+            <td>{{eunits}}</td>
+            <td>{{totalreps}}</td>
+          <div class="exerciseDetails"></div>
+          <td><button onclick="deleteLogDetail({{lid}},{{ldid}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+          <td><button type="button" class="btn btn-sm btn-outline-primary" onclick="getLogDetailUpdate({{lid}},{{ldid}})" id="getLogDetailUpdate" data-toggle="modal" data-id="{{bid}}" data-target="#updatelogDetailModal">Update</button></td>
+  </tbody>
+  {{else}}
+   <tr>
+      <td>{{fname}} {{lname}}</td> 
+   <td></td> 
+  <td></td> 
+  <td></td> 
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <div class="alert alert-warning" role="alert">
+  <p class="strong">Click "Add Exercise" to Add Exercises to a Log [Many-to-Many Relationship!]</p>
+  </div>
+  {{/each}}
+</table>
+
+
+
+
+</div>
+</div>
+</div>

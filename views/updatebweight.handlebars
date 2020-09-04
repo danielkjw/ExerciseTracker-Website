@@ -1,0 +1,29 @@
+<form id='updateBweightForm' action='/bweight/id' method='post'> 
+
+<div class="form-group row">
+  <label for="example-number-input" class="col-2 col-form-label">Weight</label>
+  <div class="col-10">
+    <input class="form-control" type="number" name="weight" value="{{bweight.[0].weight}}" id="weight1">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-date-input" class="col-2 col-form-label">Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" name="bdate" value="{{bweight.[0].date}}" id="date1">
+  </div>
+</div>
+<div class="form-group row">
+    <label for="units" class="col-2 col-form-label">Units</label>
+    <div class="col-10">
+    <select class="form-control" name="units" id="units1">
+      <option name="units" value="kg">kg</option>
+      <option name="units" value="lbs">lbs</option>
+    </select>
+    </div>
+</div>
+
+</form> 
+<button type="submit" value="Submit" onclick="updateBweight({{bweight.[0].id}})" date-target class="btn btn-primary" data-id="{{bweight.[0].id}}">Update</button>
+
+
+

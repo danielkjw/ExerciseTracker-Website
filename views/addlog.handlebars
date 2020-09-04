@@ -1,0 +1,19 @@
+<form id="addLogForm" action="/logexercise" method="post"> 
+     <div class="form-group row"> 
+      <div class="col-auto">
+        <select name="mid" id="addlogfilterid" class="form-control"><option>Choose Member</option>
+        <option name id=0>---</option>
+        {{#each memberlist}}
+        <option name="mid" value="{{mid}}">{{fname}} {{lname}} </option>
+        {{/each}}
+        </select>
+    </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-date-input" class="col-2 col-form-label">Choose Date</label>
+      <div class="col-10">
+        <input class="form-control" type="date" name="ldate" id="ldate1">
+      </div>
+    </div>
+</form>
+<button type="submit" class="btn btn-primary" value="Submit" onclick="addLog()">Add Log</button>

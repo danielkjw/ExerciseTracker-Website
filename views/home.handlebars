@@ -1,0 +1,114 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-0Mou2qXGeXK7k/Ue/a1hspEVcEP2zCpoQZw8/MPeUgISww+VmDJcy2ri9tX0a6iy" crossorigin="anonymous">
+
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B3E5FC;">
+  <a class="navbar-brand" href="./">Workout Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav  mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link active" href="./"> Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="./member"> Member List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./exercise"> Exercise List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./logexercise"> Member, Log, & Exercise</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="container-fluid bg-white">
+<div class="row">
+{{!--<div class="container-fluid">--}}
+    <div class="col"> 
+    <div class="card titlecard">
+        <div class="card-body">
+            <div class="jumbotron jumbotron-fluid bg-white">
+              <div class="container">
+                <h1>Workout Tracker</h1>
+                <p class="h2">This is the Navigation Page</p>
+                <p class="text-muted">Descriptions are below.</p>
+              </div>
+            </div>
+            {{!--<h1>Workout Tracker: Navigation Page</h1>--}}
+            {{!--<h2="d-flex p-2"> Descriptions are below</h2> --}}
+            {{!--This is some text within a card body.--}}
+        </div>  
+    </div>
+    </div>
+{{!--</div>--}}
+</div>
+
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <div class="card main">
+            <div class="card-header h1">Member, Exercise, Bweight </div> 
+            <div class="card-body">
+                
+                 <li>Allows Update, Delete, Add operations with all Member, Bweight Entities.</li>
+                 <li>Allows for Change/Dissociation in "Many-to-many" relationship: Member's favorite exercises listed via Member_Exercise </li>
+            </div>
+            
+                <div class="col-2"> 
+                <a type="button" href="/member" class="btn btn-outline-info"> GO TO PAGE <i class="fas fa-arrow-right"></i></i></a>
+                </div>
+            <div class-"card-footer">
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col">
+        <div class="card main">
+            <div class="card-header h1">Category & Exercises</div>
+            <div class="card-body">
+                 <li>Allows Update, Delete, Add operations with all Exercise and Category entities.</li>
+                 <li> Allows for Change/Dissociation in "1-to-many" relationship: allows change operations in the relationship of Categories to Exercises  .</li>
+                <li> Allows for Filtering by Category Entity to find Exercises that are related to that Category  .</li>
+            </div>
+            <div class="col-2"> 
+                <a type="button" href="./exercise" class="btn btn-outline-info"> GO TO PAGE <i class="fas fa-arrow-right"></i></i></a>
+                </div>
+            <div class-"card-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <div class="card main">
+            <div class="card-header h1"> Member, Log, Exercise </div>
+            <div class="card-body">
+                 <li>Allows Update, Delete, Add operations with all Log, Exercise, Member entities.</li>
+                 <li>Allows for Change in "1-to-many" relationship: Member - Log </li>
+                 <li>Allows for Change/Dissociation in "Many-to-many" relationship: Log - Exercise via (log_exercise aka logdetails) </li>
+            </div>
+            <div class="col-2"> 
+                <a type="button" href="./logexercise" class="btn btn-outline-info"> GO TO PAGE <i class="fas fa-arrow-right"></i></i></a>
+            </div>
+            <div class-"card-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row"></div>
+</div>
+
+

@@ -1,0 +1,34 @@
+<div id="newtable">
+  <div class="table-responsive">
+  <h3>Exercise List:</h3>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+            <th>Category ID</th>
+            <th>Category Name</th> 
+            <th>Exercise ID</th> 
+            <th>Exercise Name</th> 
+            <th>Exercise Description</th>
+            </tr>
+        </thead> 
+        <tbody> 
+            {{#each exercise}} 
+            <tr> 
+                <td>{{cid}}</td> 
+                <td>{{cname}}</td> 
+                <td>{{eid}}</td> 
+                <td>{{ename}}</td>
+                <td>{{description}}</td>
+                <<td><button onclick="deleteMember({{id}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+                <td><button type="button" class="btn btn-sm btn-outline-primary"  onclick="getMemberUpdate({{id}})" id="#updateMem" data-toggle="modal" data-id="{{id}}" data-target="#updateMemModal">Update</button></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+        </tbody> 
+    </table>
+  </div>
+  </div>  
+
+ 
+ 

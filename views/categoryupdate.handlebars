@@ -1,0 +1,8 @@
+
+<form id='addCategory11' action='/category/id' method='post'> 
+    <div class="form-group">
+      <label for="cname" class="col-form-label">Update Category Name:</label>
+      <input type="text" id="validationDefault01" class="form-control" name="cname" value="{{category.[0].cname}}">
+    </div>
+</form>
+<button type="submit" value="Submit" onclick="updateCategory({{category.[0].cid}})" class="btn btn-primary">Update</button>

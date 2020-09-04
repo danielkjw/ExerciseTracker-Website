@@ -1,0 +1,43 @@
+
+
+<div class="table-responsive">
+<h3>Current people:</h3>
+<table class="table table-striped table-bordered table-hover" id="table_id">
+    <thead class="bg-white">
+        <tr>
+        <th>ID</th> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Body Weight</th>
+        <th>Units</th>
+        <th>Photo</th>
+        <th>About Me</th>
+        </tr>
+    </thead> 
+    <tbody> 
+        {{#each r1}} 
+        <tr>
+             <td>{{id}}</td> 
+            <td>{{fname}}</td> 
+            <td>{{lname}}</td> 
+            <td>{{gender}}</td> 
+            <td>{{age}}</td>
+            <td>{{weight}}</td>
+            <td>{{units}}</td>
+            <td>{{photo}}</td>
+            <td>{{aboutme}}</td>
+            <td><button onclick="deleteMember({{id}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+            <td><button type="button" class="btn btn-outline-primary btn-sm"  onclick="getMemberUpdate({{id}})" id="#updateMem" data-toggle="modal" data-id="{{id}}" data-target="#updateMemModal">Update</button></td>
+            <td><button onclick="/member/details/{{id}}" type="button" class="btn-sm btn-light"><i class="fas fa-info-circle"></i> Profile</button></td>
+            <td><button type="button" onclick="getFriendlist({{id}})" data-id="{{id}}" class="btn-sm btn-light" data-toggle="modal" data-target="#friendmodal"><i class="fas fa-user-friends"></i></a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+    </tbody> 
+</table>
+</div>
+</div>
+</div>
+

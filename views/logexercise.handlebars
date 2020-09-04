@@ -1,0 +1,332 @@
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B3E5FC;">
+  <a class="navbar-brand" href="./">Workout Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav  mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link active" href="./"> Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="./member"> Member List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./exercise"> Exercise List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./logexercise"> Member, Log, & Exercise</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- add user form -->
+<div class="modal fade" id="adduserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="adduserModal">Add User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addmember" action="/member" method="post">
+          <div class="form-group">
+            <label for="fname" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control"name="fname" id="fname">
+          </div>
+           <div class="form-group">
+            <label for="lname" class="col-form-label">Last Name:</label>
+            <input type="text" class="form-control" name="lname"id="lname" >
+          </div>
+           <div class="form-group">
+            <label for="age" class="col-form-label">Age:</label>
+            <input type="number" class="form-control" name="age"id="age">
+          </div>
+          <div class="form-group">
+          <label class="mr-sm-2" for="gender">Gender:</label>
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="gender" id="gender">
+              <option selected value="m">---</option>
+              <option value="f">Female</option>
+              <option value="m">Male</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="aboutme" class="col-form-label">About Me:</label>
+            <textarea class="form-control" id="message-text" name="aboutme"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+         <button type="submit" value="Submit" onclick="addMember()" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE USER  MODAL -->
+<div class="modal fade" id="updateMemModal" tabindex="-1" role="dialog" aria-labelledby="updateMember" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateMemModal"> Update Member</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updatemember"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMER modal -->
+<div class="container">
+<div class="modal fade" id="timerModal" tabindex="-1" role="dialog" aria-labelledby="timerModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="timerModal1">TIMER</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+              <div class="wrapper">
+              <h1>Stopwatch</h1>
+              <p class="h1"><span id="minutes">00</span>:<span id="seconds">00</span>:<span id="tens">00</span></p>
+              <button id="button-start" class="btn btn-primary">Start</button>
+              <button id="button-stop" class="btn btn-warning">Stop</button>
+              <button id="button-reset" class="btn btn-outline-info">Reset</button>
+              </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Member_exercise Add modal -->
+<div class="container">
+<div class="modal fade" id="addMemExerciseModal" tabindex="-1" role="dialog" aria-labelledby="addMemExerciseModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMemExerciseModal1">Update Favorite Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="addMemberExercise"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Member_exercise update list modal -->
+<div class="container">
+<div class="modal fade" id="memberExerciseUpdateModal" tabindex="-1" role="dialog" aria-labelledby="memberExerciseUpdateModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="memberExerciseModal">Update Favorite Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updateMemberExercise"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Log Add modal -->
+<div class="container">
+<div class="modal fade" id="addLogModal" tabindex="-1" role="dialog" aria-labelledby="addLogModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addLogModal1"> Add A New Log</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<!--table data-->
+
+      <div id="addlog"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Log update list modal -->
+<div class="container">
+<div class="modal fade" id="logUpdateModal" tabindex="-1" role="dialog" aria-labelledby="logUpdateModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logUpdateModal1">Update Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updatelog"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- getLogDetailUpdateModal list modal -->
+<div class="container">
+<div class="modal fade" id="updatelogDetailModal" tabindex="-1" role="dialog" aria-labelledby="updatelogDetailModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatelogDetailModal1">Update Log Detail Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updatelogdetail"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- getAddLogDetailModal list modal -->
+<div class="container">
+<div class="modal fade" id="addLogDetailModal" tabindex="-1" role="dialog" aria-labelledby="addLogDetailModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addLogDetailModal1">Add Log Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="addlogdetail"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>-
+</div>
+
+<div id="container-fluid bg-white">
+<div class="col">
+<div class="card bg-white">
+  <div class="card-header bg-light"><h2>Member, Log, & Exercise</h2>
+  </div>
+    <div class="card-body  bg-white">
+      <h5 class="card-title bg-white">List of Member, Log, Exercise entities</h5>
+      <p class="card-text">View, Add, Update, Delete Log with Log_Exercise (exercise details) in relation to Exercise entity. </p>
+      <p class="card-text">View, Add, Update, Delete Many-to-Many relationship of Log and Exercise entities.</p>
+      <p class="card-text">View, Add, Update, Delete 1-to-Many relationship of Member to Log entity.</p>
+    </div>
+
+    
+<div class="memberlist">
+  
+<div class="row">
+  <div class="col-sm">
+     <button type="button" onclick="enablePop()" class="btn btn-sm btn-outline-info" id="popover123" data-container="body" data-toggle="popover" data-placement="top" data-content="Member to Log (1-to-Many), Log to Exercise (Many-to-Many) Entities linked by logDetails table. Click Log Details for Log-to-Exercise Data. REQUIRES PAGE RELOAD TO SEE UPDATES">
+     Click for Many-to-Many Entity Information
+  </button> 
+      {{!--<td><button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#timerModal" data-id="{{lid}}" class="btn-sm btn-light"><i class="fas fa-info-circle"></i>Timer</button></td>--}}
+      <td><button type="button" class="btn btn-success btn-sm" data-toggle="modal" onclick="getAddLog()" data-target="#addLogModal" data-id="{{lid}}" class="btn-sm btn-light"><i class="fas fa-info-circle"></i>Add Log</button></td>
+
+  </div>
+</div>
+
+<div id="getexercise"></div>
+  <div class="row">
+  
+  <div id="getmembertable"></div>
+    <!--toggle table-->
+     <div class="collapse" id="collapseExample9">
+          <div id="logdetails"></div>
+      </div> 
+
+      
+       <div class="collapse" id="bweightcollapse">
+          <div id="bweight"></div>
+      </div> 
+      
+    <div class="col-auto">
+    <div class="table-responsive">
+        <h3>Member List</h3>
+        <table class="table table-md table-striped table-bordered table-hover" id="table_id">
+            <thead class="bg-white">
+                <tr>
+                <th>ID</th> 
+                <th>First Name</th> 
+                <th>Last Name</th> 
+                <th>Log ID</th>
+                <th>Date</th>
+                {{!--<th>Body Weight</th>--}}
+                {{!--<th>Units</th>--}}
+                </tr>
+            </thead> 
+            <tbody> 
+                {{#each memberlog}} 
+                <tr>
+                     <td>{{id}}</td> 
+                    <td>{{fname}}</td> 
+                    <td>{{lname}}</td> 
+                    <td>{{lid}}</td> 
+                    <td>{{ldate}}</td>
+                    {{!--<td>{{aboutme}}</td>--}}
+                    <td><button onclick="deleteLog({{lid}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+                    <td><button type="button" class="btn btn-sm btn-outline-primary"  onclick="getLogUpdate({{lid}})" id="#logUpdate1" data-toggle="modal" data-id="{{lid}}" data-target="#logUpdateModal">Update</button></td>
+                    <td><button type="button" class="btn btn-outline-info btn-sm" onclick="getlogDetails({{lid}})"  data-toggle="collapse" data-target="#collapseExample9" data-id="{{lid}}" class="btn-sm btn-light"><i class="fas fa-info-circle"></i>Log Details</button></td>
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table>
+        </div>
+      </div>
+  </div> <!--row div-->
+</div>
+

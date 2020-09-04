@@ -1,0 +1,13 @@
+<form id='updateLogForm' action='/logexercise/id' method='post'> 
+
+<div class="form-group row">
+  <label for="example-date-input" class="col-2 col-form-label">Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" name="ldate" value="{{memberlog.[0].ldate}}" id="ldate">
+  </div>
+</div>
+</form> 
+<button type="submit" value="Submit" onclick="updateLog({{memberlog.[0].lid}})" date-target class="btn btn-primary" data-id="{{memberlog.[0].lid}}">Update</button>
+
+
+

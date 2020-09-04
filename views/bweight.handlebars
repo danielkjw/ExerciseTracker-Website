@@ -1,0 +1,43 @@
+
+<div class="col-4">
+<table class="table table-sm table-striped table-bordered table-hover table-light">
+
+<blockquote class="blockquote">
+</blockquote> 
+ <ul class="list-inline">
+  <li class="list-inline-item"><p class="h5">{{bweight.[0].fname}} {{bweight.[0].lname}} </p></li>
+</ul>
+  <thead>
+
+      <p><strong>Body Weight</strong></p>
+      
+      <tr>
+      <th>Member ID</th>
+      <th>Bweight ID</th> 
+      <th>Date</th>
+      <th>Weight</th>
+      <th>Units</th>
+      </tr>
+  </thead> 
+  <tbody> 
+      <tr>{{#each bweight}}
+          <td>{{id}}</td> 
+          <td>{{bid}}</td>
+          <td>{{bdate}}</td>
+          <td>{{weight}}</td>
+          <td>{{units}}</td>
+          <td><button onclick="deleteBweight({{bid}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+          <td><button type="button" class="btn btn-sm btn-outline-primary" onclick="getBweightUpdate({{bid}})" id="getBweightUpdate1" data-toggle="modal" data-id="{{bid}}" data-target="#bweightUpdateModal">Update</button></td>
+      </tr> 
+      {{/each}} 
+  </tbody> 
+  </tbody>
+</table>
+<blockquote class="blockquote text-center">
+    <button type="button" class="btn btn-success" id="getAddBweightID" onclick="getAddBweight({{bweight.[0].id}})"  data-toggle="modal" data-target="#addBweightModal"><i class="fas fa-plus-circle"></i> Add Bweight</button>
+</blockquote>
+
+
+</div>
+</div>
+</div>

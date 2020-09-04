@@ -1,0 +1,34 @@
+
+
+<div class="col">
+<h5>User ID: {{member1_id}}</h5>
+<table class="table table-striped table-bordered table-hover mw-100 mh-100" id="getfriendlist">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addfriendModal" data-whatever="@insert"><i class="fas fa-plus-circle"></i> Add Friend</button>
+
+    <thead>
+        <tr>
+        <th>Friend ID</th>     
+        <th>member1_id</th> 
+        <th>member2_id</th> 
+        <th>Status</th>
+        <th>fname</th>
+        <th>lname</th>
+        </tr>
+    </thead> 
+    <tbody> 
+        {{#each r2}} 
+        <tr>
+            <td>{{friend_id}}</td> 
+            <td>{{member1_id}}</td> 
+            <td>{{member2_id}}</td> 
+            <td>{{status}}</td>
+            <td>{{fname}}</td>
+            <td>{{lname}}</td>
+            <td><button onclick="deleteMember({{id}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+            <td><a class="btn btn-outline-primary" href="/people/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+    </tbody> 
+</table>
+</div>

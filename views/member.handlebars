@@ -1,0 +1,298 @@
+{{!--<html>--}}
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{{!--<link rel="stylesheet" type="text/css" href="adduser.css">--}}
+{{!--<script type="text/javascript" src="/static/member2.js"></script>--}}
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B3E5FC;">
+  <a class="navbar-brand" href="./">Workout Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav  mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link active" href="./"> Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="./member"> Member List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./exercise"> Exercise List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./logexercise"> Member, Log, & Exercise</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- add user form -->
+<div class="modal fade" id="adduserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="adduserModal">Add User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addmember" action="/member" method="post">
+          <div class="form-group">
+            <label for="fname" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control"name="fname" id="fname">
+          </div>
+           <div class="form-group">
+            <label for="lname" class="col-form-label">Last Name:</label>
+            <input type="text" class="form-control" name="lname"id="lname" >
+          </div>
+           <div class="form-group">
+            <label for="age" class="col-form-label">Age:</label>
+            <input type="number" class="form-control" name="age"id="age">
+          </div>
+          <div class="form-group">
+          <label class="mr-sm-2" for="gender">Gender:</label>
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="gender" id="gender">
+              <option selected value="m">---</option>
+              <option value="f">Female</option>
+              <option value="m">Male</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="aboutme" class="col-form-label">About Me:</label>
+            <textarea class="form-control" id="message-text" name="aboutme"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+         <button type="submit" value="Submit" onclick="addMember()" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE USER  MODAL -->
+<div class="modal fade" id="updateMemModal" tabindex="-1" role="dialog" aria-labelledby="updateMember" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateMemModal"> Update Member</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updatemember"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- friend list modal -->
+<div class="container">
+<div class="modal fade" id="friendmodal" tabindex="-1" role="dialog" aria-labelledby="friendmodalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="friendmodalLabel">Friend List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div id="friendlist"></div><!--table data-->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Member_exercise Add modal -->
+<div class="container">
+<div class="modal fade" id="addMemExerciseModal" tabindex="-1" role="dialog" aria-labelledby="addMemExerciseModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMemExerciseModal1">Update Favorite Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="addMemberExercise"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Member_exercise update list modal -->
+<div class="container">
+<div class="modal fade" id="memberExerciseUpdateModal" tabindex="-1" role="dialog" aria-labelledby="memberExerciseUpdateModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="memberExerciseModal">Update Favorite Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updateMemberExercise"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Bweight Add modal -->
+<div class="container">
+<div class="modal fade" id="addBweightModal" tabindex="-1" role="dialog" aria-labelledby="addBweightModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addBweightModal1">Update Body Weight</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<!--table data--><div id="addbweight"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Bweight update list modal -->
+<div class="container">
+<div class="modal fade" id="bweightUpdateModal" tabindex="-1" role="dialog" aria-labelledby="bweightUpdateModal1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bweightUpdateModal1">Update Favorite Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="updatebweight"></div><!--table data-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div id="container-fluid bg-white">
+<div class="col">
+<div class="card bg-white">
+  <div class="card-header bg-light"><h2>Member List!</h2></div>
+    <div class="card-body  bg-white">
+      <h5 class="card-title bg-white">List of member entity and related entities</h5>
+      <p class="card-text">View, Add, Update, Delete Member entity</p>
+      <p class="card-text">View, Add, Update, Delete One-to-Many Member to Bweight entity</p>
+      <p class="card-text">View, Add, Update, Delete Many-to-Many Member & Exercise relationship via the Member_Exercise table</p>
+    </div>
+   
+    
+<div class="memberlist"></div>
+ </div> 
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adduserModal" data-whatever="@insert"><i class="fas fa-plus-circle"></i> Add User</button>
+
+
+
+<div class="row">
+  <div class="col-sm">
+     <button type="button" onclick="enablePop()" class="btn btn-sm btn-outline-info" id="popover123" data-container="body" data-toggle="popover" data-placement="right" data-content="Member & Exercise Entities linked by Member_Exercise table in a Many-to-Many Relationship. Click Fav. Exercise to See Member_Exercise Data. REQUIRES PAGE RELOAD TO SEE UPDATES">
+     Click for Many-to-Many Entity Information
+  </button> 
+  </div>
+</div>
+
+<div id="getexercise"></div>
+  <div class="row">
+  
+  <div id="getmembertable"></div>
+    <!--toggle table-->
+     <div class="collapse" id="collapseExample">
+         
+          <div id="memberexercise"></div>
+      </div> 
+      
+      
+       <div class="collapse" id="bweightcollapse">
+          <div id="bweight"></div>
+      </div> 
+      
+    <div class="col-auto">
+    <div class="table-responsive">
+        <h3>Member List</h3>
+        <table class="table table-md table-striped table-bordered table-hover" id="table_id">
+            <thead class="bg-white">
+                <tr>
+                <th>ID</th> 
+                <th>First Name</th> 
+                <th>Last Name</th> 
+                <th>Gender</th>
+                <th>Age</th>
+                {{!--<th>Body Weight</th>--}}
+                {{!--<th>Units</th>--}}
+                <th>Photo</th>
+                <th>About Me</th>
+                </tr>
+            </thead> 
+            <tbody> 
+                {{#each r1}} 
+                <tr>
+                     <td>{{id}}</td> 
+                    <td>{{fname}}</td> 
+                    <td>{{lname}}</td> 
+                    <td>{{gender}}</td> 
+                    <td>{{age}}</td>
+                    {{!--<td>{{weight}}</td>--}}
+                    {{!--<td>{{units}}</td>--}}
+                    <td>{{photo}}</td>
+                    <td>{{aboutme}}</td>
+                    <td><button onclick="deleteMember({{id}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+                    <td><button type="button" class="btn btn-outline-primary btn-sm"  onclick="getMemberUpdate({{id}})" id="#updateMem" data-toggle="modal" data-id="{{id}}" data-target="#updateMemModal">Update</button></td>
+                    <td><button type="button" class="btn btn-outline-info btn-sm" onclick="getMemExercise({{id}})"  data-toggle="collapse" data-target="#collapseExample" data-id="{{id}}" class="btn-sm btn-light"><i class="fas fa-info-circle"></i> Fav. Exercises</button></td>
+                    <td><button type="button" class="btn btn-outline-dark btn-sm" onclick="getBweight({{id}})"  data-toggle="collapse" data-target="#bweightcollapse" data-id="{{id}}" class="btn-sm btn-light"><i class="fas fa-info-circle"></i> Body Weight</button></td>
+                    {{!--<td><button type="button" onclick="getFriendlist({{id}})" data-id="{{id}}" class="btn-sm btn-light" data-toggle="modal" data-target="#friendmodal"><i class="fas fa-user-friends"></i></a></td>--}}
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table>
+        </div>
+      </div>
+  </div> <!--row div-->
+</div>
+

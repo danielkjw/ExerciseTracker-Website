@@ -1,0 +1,30 @@
+{{#each member}}
+<form id="updateMember" action="/member/:id" method="post">
+  <div class="form-group">
+    <label for="fname" class="col-form-label">First Name:</label>
+    <input type="text" class="form-control"name="fname" id="fname" value="{{fname}}">
+  </div>
+   <div class="form-group">
+    <label for="lname" class="col-form-label">Last Name:</label>
+    <input type="text" class="form-control" name="lname"id="lname" value="{{lname}}">
+  </div>
+   <div class="form-group">
+    <label for="age" class="col-form-label">Age:</label>
+    <input type="number" class="form-control" name="age"  value="{{age}}" id="age">
+  </div>
+  <div class="form-group">
+  <label class="mr-sm-2" for="gender">Gender:</label>
+    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="gender" id="gender">
+      <option selected value="{{gender}}">No Change</option>
+      <option value="m">Male</option>
+      <option value="f">Female</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="aboutme" class="col-form-label">About Me:</label>
+    <textarea class="form-control" id="message-text" name="aboutme">{{aboutme}}</textarea>
+  </div>
+</form>
+<button type="submit" value="Submit" onclick="updateMember({{id}})"class="btn btn-primary" data-id="{{id}}">Update</button>
+{{/each}}
+  

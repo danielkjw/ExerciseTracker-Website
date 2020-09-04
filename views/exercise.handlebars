@@ -1,0 +1,224 @@
+
+<script type="text/javascript" src="/static/member2.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B3E5FC;">
+  <a class="navbar-brand" href="./">Workout Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav  mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link active" href="./"> Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="./member"> Member List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./exercise"> Exercise List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./logexercise"> Member, Log, & Exercise</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- add exercise form -->
+<div class="modal fade" id="addexericseModal" tabindex="-1" role="dialog" aria-labelledby="addexericseModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addexericseModal">Add Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id='addexercise' action='/exercise' method='post'> 
+          <div class="form-group">
+            <label class="mr-sm-2" for="category_id">Category:</label>
+              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="category_id" id="cid">
+                <option selected value="1">---</option>
+                {{#each category}}
+                <option value="{{cid}}">{{cname}}</option>
+                {{/each}}
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="ename" class="col-form-label">Exercise Name:</label>
+            <input type="text" class="form-control"name="ename" id="ename">
+          </div>
+          <div class="form-group">
+            <label for="description" class="col-form-label">Exercise Description:</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+         <button type="submit" value="Submit" onclick="addExercise()" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE Exercise  MODAL -->
+<div class="modal fade" id="updateExerciseModal" tabindex="-1" role="dialog" aria-labelledby="updateExerciseModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateMemModal"> Update Exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <div class="modal-body">
+        <div id="exerciseupdate"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add Category MODAL -->
+<div class="modal fade" id="addCategoryeModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryeModal1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCategoryeModal1"> Add Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+           <div class="modal-body">
+            <form id='addCategory11' action='/category' method='post'> 
+                <div class="form-group">
+                  <label for="cname" class="col-form-label">Category Name:</label>
+                  <input type="text" id="validationDefault01" class="form-control"name="cname" >
+                </div>
+            </form>
+          </div>
+      <div class="modal-footer">
+         <button type="submit" value="Submit" onclick="addCategory()" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Update Category MODAL -->
+<div class="modal fade" id="updateCategoryModal" tabindex="-1" role="dialog" aria-labelledby="updateCategoryModal1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateCategoryModal1"> Update Categories</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+          <div class="modal-body">
+            <div id="categoryupdate"></div>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="container-fluid bg-white">
+  <div class="col">
+  <div class="card bg-white">
+  <div class="card-header bg-light"><h2>Excerise List!</h2></div>
+  <div class="card-body  bg-white">
+    <h5 class="card-title bg-white">Exercise Category and Exercise Entity</h5>
+    <p class="card-text">Select Category by Dropdown menu.</p>
+  </div> 
+  
+  
+<div class="exerciselist"> 
+  
+     <div class="form-group row"> 
+      <div class="col-auto">
+        <form id='filter_exercises' action='/exercise/category/:id' method='get'> 
+        <select name="categoryFilterId" id="categoryFilterId" class="form-control"><option>Choose By Category</option>
+        <option name id=0>View All</option>
+        {{#each category}}
+        <option name id={{cid}}>{{cname}}</option>
+        {{/each}} 
+        </select>
+        </form>
+        <button class="btn btn-outline-success search" onclick="filterExerciseByCategory()" id="filterCategory" type="button" value="Filter"><i class="fas fa-search"></i> Search</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addexericseModal" data-whatever="@insert"><i class="fas fa-plus-circle"></i> Add Exercise</button>
+    </div>
+    </div>
+    <td><button type="button" class="btn btn-info btn-sm" onclick="getCategory()"  data-toggle="collapse" data-target="#collapseExample" data-id="{{id}}" class="btn-sm btn-light"><i class="fas fa-info-circle"></i> + Show All Categories</button></td>
+    <button type="button" onclick="enablePop()" class="btn btn-sm btn-outline-info" id="popover123" data-container="body" data-toggle="popover" data-placement="right" data-content="Category & Exercise Entities linked in a 1-to-Many Relationship. Click Show All Categories to See Category Data. REQUIRES PAGE RELOAD TO SEE UPDATES">
+     Click for 1-to-Many Entity Information
+  </button> 
+        <!--toggle table-->
+     <div class="collapse" id="collapseExample">
+          <div id="category"></div>
+          <blockquote class="blockquote text-left">
+              <button type="button" class="btn btn-outline-success" id="getAddCategoryID" onclick="getAddCategory()"  data-toggle="modal" data-target="#addCategoryeModal"><i class="fas fa-plus-circle"></i> Add Category</button>
+          </blockquote>
+      </div> 
+ </div>   
+</div> 
+</div>
+</div>
+
+<div id="getexercise"></div>
+
+<div id="oldtable">
+  <div class="table-responsive">
+  <h3>Exercise List:</h3>
+
+    <table class="table table-sm table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+            <th>Category ID</th>
+            <th>Category Name</th> 
+            <th>Exercise ID</th> 
+            <th>Exercise Name</th> 
+            <th>Exercise Description</th>
+            </tr>
+        </thead> 
+        <tbody> 
+            {{#each exercise}} 
+            <tr> 
+                <td>{{cid}}</td> 
+                <td>{{cname}}</td> 
+                <td>{{eid}}</td> 
+                <td>{{ename}}</td>
+                <td>{{description}}</td>
+                <td><button onclick="deleteExercise({{eid}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+                <td><button type="button" class="btn btn-sm btn-outline-primary" onclick="getExerciseUpdate({{eid}})" id="#updateExerciseModal" data-toggle="modal" data-id="{{eid}}" data-target="#updateExerciseModal">Update</button></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+        </tbody> 
+    </table>
+    </div>
+  </div>
+  
+
+
+
+
+{{!--<script id="entry-template" type="text/x-handlebars-template">--}}
+{{!--  <div class="entry">--}}
+{{!--    <h1>{{cid}}</h1>--}}
+{{!--    <div class="body">--}}
+{{!--      {{cname}}--}}
+{{!--    </div>--}}
+{{!--  </div>--}}
+{{!--</script>--}}

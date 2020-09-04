@@ -1,0 +1,48 @@
+
+<div class="col-4">
+<table class="table table-sm table-striped table-bordered table-hover table-light">
+{{#each member}}
+
+<blockquote class="blockquote">
+</blockquote> 
+ <ul class="list-inline">
+  <li class="list-inline-item"><p class="h5">{{fname}} {{lname}} </p></li>
+</ul>
+{{/each}}
+  <thead>
+
+      <p><strong>Favorite Exercises</strong></p>
+      
+      <tr>
+      {{!--<th>Member_Exercise ID</th>--}}
+      <th>MemberID</th> 
+      {{!--<th>CategoryID</th> --}}
+      {{!--<th>ExerciseID</th> --}}
+      <th>Category</th>
+      <th>Exercise</th>
+      </tr>
+  </thead> 
+  <tbody> 
+      {{#each exercise}} 
+      <tr>
+          {{!--<td>{{meid}}</td> --}}
+          <td>{{member_id}}</td> 
+          {{!--<td>{{category_id}}</td> --}}
+          {{!--<td>{{exercise_id}}</td>--}}
+          <td>{{cname}}</td>
+          <td>{{ename}}</td>
+          <td><button onclick="deleteMemExercise({{meid}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+          <td><button type="button" class="btn btn-outline-primary btn-sm" onclick="getMemExerciseUpdate({{meid}})" id="#updateMemExercise" data-toggle="modal" data-id="{{eid}}" data-target="#memberExerciseUpdateModal">Update</button></td>
+      </tr> 
+      {{/each}} 
+  </tbody> 
+  </tbody>
+</table>
+<blockquote class="blockquote text-center">
+    <button type="button" class="btn btn-success" id="getAddMemberExerciseID" onclick="getAddMemberExercise({{member.[0].mid}})"  data-toggle="modal" data-target="#addMemExerciseModal"><i class="fas fa-plus-circle"></i> Add Favorite Exercise</button>
+</blockquote>
+
+
+</div>
+</div>
+</div>

@@ -1,0 +1,13 @@
+
+<form id='memberExerciseUpdate' action='/memberexercise/id' method='post'> 
+<div class="form-group">
+<label class="mr-sm-2" for="exercise_id">Exercise List:</label>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="exercise_id" id="exercise_id">
+    <option selected value="{{member.[0].exercise_id}}">{{exercise.ename}}</option>
+    {{#each exercise}}
+    <option value="{{eid}}">{{ename}}</option>
+    {{/each}}
+  </select>
+</div>
+</form>
+<button type="submit" value="Submit" onclick="updateMemExercise({{member.[0].meid}})"class="btn btn-primary" data-id="{{meid}}">Update</button>

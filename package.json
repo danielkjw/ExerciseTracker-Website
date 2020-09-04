@@ -1,0 +1,35 @@
+{
+  "name": "getpostcheck",
+  "version": "1.0.0",
+  "description": "Daniel Kim's Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Daniel Kim",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.2",
+    "consolidate": "^0.15.1",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.11.3",
+    "faker": "^4.1.0",
+    "jquery": "^3.2.1",
+    "jquery-mask-plugin": "^1.14.15",
+    "mysql": "^2.15.0",
+    "popper.js": "^1.14.3",
+    "request": "^2.83.0",
+    "serve-static": "^1.13.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "PostCheck"
+  },
+  "keywords": [
+    "postCheck"
+  ]
+}

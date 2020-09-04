@@ -1,0 +1,28 @@
+<div id="categorytable">
+<div class="col-4">
+  <div class="table-responsive">
+  <h3>Category List:</h3>
+
+  <table class="table table-sm table-striped table-bordered table-hover table-light">
+        <thead>
+            <tr>
+            <th>Category ID</th>
+            <th>Category Name</th> 
+            </tr>
+        </thead> 
+        <tbody> 
+            {{#each category}} 
+            <tr> 
+                <td>{{cid}}</td> 
+                <td>{{cname}}</td> 
+                <td><button onclick="deleteCategory({{cid}})" type="button" class="btn-sm btn-outline-danger">Delete</button></td>
+                <td><button type="button" class="btn btn-sm btn-outline-primary" onclick="getCategoryUpdate({{cid}})" id="getCategoryUpdate1" data-toggle="modal" data-id="{{eid}}" data-target="#updateCategoryModal">Update</button></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+        </tbody> 
+    </table>
+    </div>
+  </div>
+ </div>
+ 
