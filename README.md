@@ -14,14 +14,14 @@
 
 #### Entity-Relationship Diagrams and Schema
 
-![erdiagram](E:\Git Repos\Web-Related-Projects\ExerciseTracker-Website\images\erdiagram.jpg)
+![erdiagram](./images/erdiagram.jpg)
 
 
 
-![schema1](E:\Git Repos\Web-Related-Projects\ExerciseTracker-Website\images\schema1.jpg)
+![schema1](./images/schema1.jpg)
 
 
 
 #### Website Page Outline
 
-![pageoutline](E:\Git Repos\Web-Related-Projects\ExerciseTracker-Website\images\pageoutline.jpg)
+![pageoutline](./images/pageoutline.jpg)
